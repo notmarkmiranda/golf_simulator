@@ -18,13 +18,15 @@ class Deck
     cards.count
   end
 
-  private
-
-  def initialize_deck
-    cards = []
-    2.times { create_cards(cards) }
-    cards.push(jokers).flatten
+  def complete?
+    card_count == 108
   end
+
+  def shuffle!
+    return true if self.complete? && cards.shuffle!
+  end
+
+  private
 
   def create_cards(cards)
     SUITS.each  do |suit|
@@ -33,6 +35,12 @@ class Deck
       end
     end
     cards
+  end
+
+  def initialize_deck
+    cards = []
+    2.times { create_cards(cards) }
+    cards.push(jokers).flatten
   end
 
   def jokers
