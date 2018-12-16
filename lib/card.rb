@@ -15,6 +15,6 @@ class Card
   end
 
   def value
-    VALUES[number] ? VALUES[number] : number.to_i
+    VALUES[number] || number.to_i
   end
 end
